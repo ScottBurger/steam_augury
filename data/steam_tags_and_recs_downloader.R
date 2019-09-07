@@ -1,10 +1,5 @@
 
-
-
 # this script scrapes the steam store webpages over a list of games to get the positivity rating, number of reviews, and tag distribution for a given game
-
-
-
 
 
 library('rvest')
@@ -12,7 +7,7 @@ library('jsonlite')
 library('httr')
 
 
-all_games <- read.table("F:\\docs\\dev\\python\\steam_reccomender\\all_app_details.txt", quote = "", sep="\t", header=T, as.is = T, comment.char = "")
+all_games <- read.table("all_app_details.txt", quote = "", sep="\t", header=T, as.is = T, comment.char = "")
 all_game_ids <- all_games$appid
 
 
@@ -21,54 +16,12 @@ tag_data_storage <- NULL
 
 
 
-
-
-
-
-
-
-
-#
-# initalizing a function to handle game tags. if a game's been delisted from the steam storefront, it'll still show up in the API. this function is to catch that error for scraping and move on to the next game if it does happen
-#
-
-
-
-
-  
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 start_time <- Sys.time()
 initial_eta <- start_time + (length(all_game_ids) * 1.75)
 initial_eta2 <- start_time + + ((length(all_game_ids) - match(i, all_game_ids)) * 1.75)
 
-#i in all_game_ids[which(all_game_ids > 224040)]
-for(i in all_game_ids[which(all_game_ids > 914000)]){
+#i in all_game_ids[which(all_game_ids > 224040)] #checkpoint in case the loop breaks
+for(i in all_game_ids){
   
   
   
@@ -127,7 +80,7 @@ for(i in all_game_ids[which(all_game_ids > 914000)]){
   
   reviews_df <- rbind(reviews_df_temp, reviews_df)
   
-  write.table(reviews_df, file = "F:\\docs\\dev\\python\\steam_reccomender\\app_reviews.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+  write.table(reviews_df, file = "app_reviews.txt", sep = "\t", row.names = FALSE, quote = FALSE)
   
   
   
@@ -165,7 +118,7 @@ for(i in all_game_ids[which(all_game_ids > 914000)]){
       
       tag_data_storage <- rbind(tag_data_storage_temp, tag_data_storage)
       
-      write.table(tag_data_storage, file = "F:\\docs\\dev\\python\\steam_reccomender\\app_tags.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+      write.table(tag_data_storage, file = "app_tags.txt", sep = "\t", row.names = FALSE, quote = FALSE)
       
     }
     ,error = function(doNothing){}
@@ -180,38 +133,6 @@ for(i in all_game_ids[which(all_game_ids > 914000)]){
   Sys.sleep(1.75)
   print(sprintf("appid %i is done at %s. %g percent complete, eta: %s", i, Sys.time(), percent_complete, time_left))
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-#save.image("F:/docs/dev/python/steam_reccomender/env_save.RData")
-
-
-
-
-
-
-
-
-
-
-
-    
-    #fromJSON(tag_data_storage$tag_data) #use this line to convert the tag data JSON dictionary to an R dataframe
-
-    
-
-    
-
 
 
 
