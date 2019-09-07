@@ -1,8 +1,8 @@
 # steam_augury
-This is a steam tag-based recommendation system that scores games according to a user's interest level for given steam tags based on their hours of playtime
+This is a steam tag-based recommendation system that scores games according to a user's interest level for given steam tags based on their hours of playtime.
 
 ## how to use
-In this python version, run *python steam_augury.py api_key steam_id* in console.
+In this python version, run *python steam_augury.py api_key steam_id* in console at the working directory of the script.
 
 ## steam api key
 Available here: https://steamcommunity.com/dev/apikey
