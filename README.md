@@ -23,4 +23,4 @@ There are 3 pre-downloaded datasets used in this system:
  * app_reviews: appid, positive_reviews, total_reviews, last_updated
  * app_tags: appid, tag_data, last_updated
  
-Normally, I'd get these datasets from the Steam API, but both the reviews and tag data doesn't exist there. So there are two web scrapers written in R (porting to python pending): app_data_downloader.R which hits the Steam API for a list of all apps, filters to only games, and pulls associated metadata. The other, steam_tags_and_recs_downloader.R, takes the curated list of games and pulls the review and tag data for them.
+Normally, I'd get these datasets from the Steam API, but both the reviews and tag data doesn't exist there. There are two R scripts which will pull data, but are very slow so as to not overwhelm the Steam servers.
