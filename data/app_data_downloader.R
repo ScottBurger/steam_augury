@@ -20,7 +20,7 @@ steam_apps <- steam_apps[with(steam_apps, order(appid)),]
 #
 
 
-known_games <- read.table("F:\\docs\\dev\\python\\steam_reccomender\\steam_all_playtimes.txt", header=T, sep="\t")
+known_games <- read.table("steam_all_playtimes.txt", header=T, sep="\t")
 known_games <- known_games[-1,]
 unknown_games <- steam_apps[steam_apps$appid > max(known_games$response.games.appid),]
 list_to_update <- rbind(known_games$response.games.appid, unknown_games$appid)
@@ -37,11 +37,10 @@ list_to_update <- unique(sort(list_to_update))
 
 all_app_details <- data.frame(NULL)
 
-#i in list_to_update[which(list_to_update > 280040)]
-
 start_time <- Sys.time()
 
-for (i in list_to_update[which(list_to_update > 999670)]){
+#i in list_to_update[which(list_to_update > 280040)] #checkpoint in case of http 503 errors
+for (i in list_to_update){
   
   steam_app_details = tryCatch({
        fromJSON(sprintf("http://store.steampowered.com/api/appdetails/?appids=%i&l=english&cc=US", i))
@@ -83,7 +82,7 @@ for (i in list_to_update[which(list_to_update > 999670)]){
 
 
 all_game_details <- subset(all_app_details, subset = (type == 'game'))
-write.table(all_game_details, "F:\\docs\\dev\\python\\steam_reccomender\\all_app_details.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+write.table(all_game_details, "all_app_details.txt", sep = "\t", row.names = FALSE, quote = FALSE)
 
 
 
