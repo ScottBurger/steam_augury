@@ -17,6 +17,8 @@ The reccomendation system will list the top 10 games according to a filtering sc
 
 The python version of this takes about 4-5 minutes to run, pending optimizations. A neat little console progress bar will tell you how far along it is, but please be patient while the magic happens!
 
+![output from steam_augury](https://svburgercom.files.wordpress.com/2019/09/steam_augury-output.png?w=680)
+
 ## about the data
 There are 3 pre-downloaded datasets used in this system:
  * all_app_details: appid, name, type, categories, genres, release_date, last_updated
