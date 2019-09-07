@@ -70,7 +70,7 @@ for (i in list_to_update){
      
    Sys.sleep(1.75)
    
-   write.table(all_app_details, file = "F:\\docs\\dev\\python\\steam_reccomender\\all_app_details.txt", sep = "\t", row.names = FALSE, quote = FALSE)
+   write.table(all_app_details, file = "all_app_details.txt", sep = "\t", row.names = FALSE, quote = FALSE)
    
    percent_complete <- nrow(all_app_details) / length(list_to_update)
    time_left <- start_time + ((length(list_to_update) - nrow(all_app_details)) * 1.75)
