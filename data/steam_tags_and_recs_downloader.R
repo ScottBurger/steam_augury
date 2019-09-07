@@ -1,5 +1,6 @@
 
-# this script scrapes the steam store webpages over a list of games to get the positivity rating, number of reviews, and tag distribution for a given game
+# this script scrapes the steam store webpages over a list of games to get the positivity rating, 
+# number of reviews, and tag distribution for a given game
 
 
 library('rvest')
