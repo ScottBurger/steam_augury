@@ -8,7 +8,9 @@ In this python version, run *python steam_augury.py api_key steam_id* in console
 Available here: https://steamcommunity.com/dev/apikey
 
 ## steam id
-For a given user's steam profile page, if you inspect source, you can find your 17 digit steam id key by searching for "g_rgProfileData". An example would look like:
+The fastest way is to go here: https://steamid.xyz/ and use the Steam64 ID.
+
+Otherwise, for a given user's steam profile page, if you inspect source, you can find your 17 digit steam id key by searching for "g_rgProfileData". An example would look like:
 
 g_rgProfileData = {"url":"https:\/\/steamcommunity.com\/profiles\/**765611________**
 
