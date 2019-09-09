@@ -127,7 +127,7 @@ app_scores_joined = pd.merge(app_scores, app_details, on='appid', how='left')
 app_scores_joined = pd.merge(app_scores_joined, app_reviews, on='appid', how='left')
 
 app_scores_joined = app_scores_joined[['appid', 'score', 'num_tags', 'total_tag_votes', 'name', 'release_date', 'positive_reviews', 'total_reviews']]
-app_scores_joined['review_rating'] = app_scores_joined['positive_reviews'] / app_scores_joined['total_reviews']
+#app_scores_joined['review_rating'] = app_scores_joined['positive_reviews'] / app_scores_joined['total_reviews']
 
 app_scores_joined['review_rating'] = app_scores_joined['positive_reviews'].div(app_scores_joined['total_reviews'].where(app_scores_joined['total_reviews'] != 0 , 0))
 app_scores_joined['review_rating'] = app_scores_joined['review_rating'].fillna(0)
