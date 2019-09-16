@@ -19,7 +19,6 @@ def sigmoid(x):
 
 
 #loading up tag data
-#tags_df = pd.read_csv("F:\\docs\\dev\\python\\steam_reccomender\\app_tags_20190724.txt", sep = "\t")
 tags_df = pd.read_csv("data\\app_tags_20190724.txt", sep = "\t")
 tags_df = tags_df.drop_duplicates()  #remove duplicates
 tags_df = tags_df[tags_df['tag_data'].apply(len) > 2]  #filtering for games that don't have tag data yet
@@ -115,11 +114,9 @@ for i in pbar(tag_search):
 app_scores = app_scores.reset_index()
 
 
-#app_details = pd.read_csv("F:\\docs\\dev\\python\\steam_reccomender\\all_app_details_20190719.txt", sep = "\t", encoding = 'unicode_escape')
 app_details = pd.read_csv("data\\all_app_details_20190719.txt", sep = "\t", encoding = 'unicode_escape')
 app_details = app_details.drop_duplicates()
 
-#app_reviews = pd.read_csv("F:\\docs\\dev\\python\\steam_reccomender\\app_reviews_20190724.txt", sep = "\t", encoding = 'unicode_escape')
 app_reviews = pd.read_csv("data\\app_reviews_20190724.txt", sep = "\t", encoding = 'unicode_escape')
 app_reviews = app_reviews.drop_duplicates()
 
